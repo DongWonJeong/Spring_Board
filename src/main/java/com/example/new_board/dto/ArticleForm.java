@@ -1,20 +1,17 @@
 package com.example.new_board.dto;
 
+import com.example.new_board.entity.Article;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+
+@AllArgsConstructor
+@ToString
 public class ArticleForm {
+    private Long id;
     private String title;
     private String content;
 
-    public ArticleForm(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-
-    //데이터 잘 받았는 지 확인하기 위해 toString 사용.
-    @Override
-    public String toString() {
-        return "ArticleForm{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
+    public Article toEntity() {
+        return new Article(id, title, content);
     }
 }
