@@ -95,9 +95,11 @@ public class ArticleController {
     @GetMapping("/articles/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes rttr){
         log.info("삭제 요청이 들어왔습니다!");
+
         // 1. 삭제할 대상 가져오기
         Article target = articleRepository.findById(id).orElse(null);
         log.info(target.toString());
+
         // 2. 대상 엔티티 삭제하기
         if(target != null){
             articleRepository.delete(target);
